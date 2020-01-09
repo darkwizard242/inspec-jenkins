@@ -2,14 +2,17 @@
 
 title "Compliance: Jenkins"
 
+default_variables = yaml(content: inspec.profile.file('variables.yml')).params
+
 control "jenkins-01" do
   impact 0.7
   title "Validate that jenkins package is installed and ready to be used."
   desc "Control to validate whether jenkins is installed on the system. It will also attempt verification for the command execution."
 
-  describe package("jenkins") do
-    it { should be_installed }
-  end
+  default_variables.each do |var|
+    describe package(var["jenkins_package_name"]) do
+      it { should be_installed }
+    end
 end
 
 
