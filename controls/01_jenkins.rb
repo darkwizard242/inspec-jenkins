@@ -44,6 +44,6 @@ control "jenkins-04" do
   desc "Control to check whether there is a 'jenkins' process is running and is owned by user 'jenkins'."
 
   describe processes('java') do
-    its('users') { should eq ['jenkins'] }
+    its('users') { should eq ['jenkins', 'jenkins'] }
   end
 end
