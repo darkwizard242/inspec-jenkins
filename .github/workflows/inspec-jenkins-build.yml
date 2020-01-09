@@ -28,4 +28,4 @@ jobs:
         inspec check . --no-color --chef-license accept
     - name: Executing Jenkins Inspec Profile
       run: |
-        sudo inspec exec . --no-color
+        sudo inspec exec . --no-color --chef-license accept
