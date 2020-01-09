@@ -42,7 +42,7 @@ control "jenkins-04" do
   title "Verify jenkins home directory exists."
   desc "Control to check whether there the default home directory for jenkins exists."
 
-  describe directoy('/var/lib/jenkins') do
+  describe directory('/var/lib/jenkins') do
     its('owner') { should eq 'jenkins' }
     its('group') { should eq 'jenkins' }
     its('mode') { should cmp '0755' }
