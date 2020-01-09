@@ -74,3 +74,16 @@ control "jenkins-06" do
     its('mode') { should cmp '0644' }
   end
 end
+
+
+control "jenkins-07" do
+  impact 0.7
+  title "Verify jenkins admin initial password file exists."
+  desc "Control to check whether the file containing the initial admin password for jenkins exists."
+
+  describe file('/var/lib/jenkins/secrets/initialAdminPassword') do
+    its('owner') { should eq 'jenkins' }
+    its('group') { should eq 'jenkins' }
+    its('mode') { should cmp '0640' }
+  end
+end
