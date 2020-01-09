@@ -40,11 +40,37 @@ end
 control "jenkins-04" do
   impact 0.7
   title "Verify jenkins home directory exists."
-  desc "Control to check whether there the default home directory for jenkins exists."
+  desc "Control to check whether the default home directory for jenkins exists."
 
   describe directory('/var/lib/jenkins') do
     its('owner') { should eq 'jenkins' }
     its('group') { should eq 'jenkins' }
     its('mode') { should cmp '0755' }
+  end
+end
+
+
+control "jenkins-05" do
+  impact 0.7
+  title "Verify jenkins lib directory exists."
+  desc "Control to check whether there lib directory for jenkins exists."
+
+  describe directory('/usr/share/jenkins') do
+    its('owner') { should eq 'root' }
+    its('group') { should eq 'root' }
+    its('mode') { should cmp '0755' }
+  end
+end
+
+
+control "jenkins-06" do
+  impact 0.7
+  title "Verify jenkins war file exists."
+  desc "Control to check whether the war file for jenkins exists."
+
+  describe file('/usr/share/jenkins/jenkins.war') do
+    its('owner') { should eq 'root' }
+    its('group') { should eq 'root' }
+    its('mode') { should cmp '0644' }
   end
 end
