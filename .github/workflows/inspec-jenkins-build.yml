@@ -23,9 +23,9 @@ jobs:
       run: |
         java -version
         curl -fsSL https://raw.githubusercontent.com/darkwizard242/devopsubuntu1804/v1.0/packer-build/mods/08-jenkins.sh | sudo bash -s -- install
-        sudo apt-get install tree -y
-        sudo tree /var/lib/jenkins
-        sudo cat /var/lib/jenkins/failed-boot-attempts.txt
+        # sudo apt-get install tree -y
+        # sudo tree /var/lib/jenkins
+        # sudo cat /var/lib/jenkins/failed-boot-attempts.txt
     - name: Checking Jenkins Inspec Profile
       run: |
         inspec check . --no-color --chef-license accept
