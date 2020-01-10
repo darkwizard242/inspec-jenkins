@@ -14,6 +14,7 @@ control "jenkins-01" do
 
   describe package(var['jenkins_package_name']) do
     it { should be_installed }
+    end
   end
 end
 
