@@ -1,9 +1,11 @@
 # copyright: 2019, Ali Muhammad
 
+title "Compliance: Jenkins"
+
+
 default_variables = yaml(content: inspec.profile.file('variables.yml')).params
 default_variables.each do |var|
 
-title "Compliance: Jenkins"
 
 control "jenkins-01" do
   impact 0.7
