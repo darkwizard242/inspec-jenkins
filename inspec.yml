@@ -1,0 +1,13 @@
+name: jenkins
+title: Jenkins Compliance
+maintainer: Ali Muhammad
+copyright: Ali Muhammad
+copyright_email: am900820@gmail.com
+license: MIT
+summary: A Jenkins Compliance Profile
+version: 0.1.0
+supports:
+  - platform: os
+  - platform-name: ubuntu
+    release: 16.04
+    release: 18.04

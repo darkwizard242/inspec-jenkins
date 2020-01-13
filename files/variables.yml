@@ -1,0 +1,4 @@
+package_name: jenkins
+service_name: jenkins
+process_req: java
+home_dir: /var/lib/jenkins

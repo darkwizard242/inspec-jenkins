@@ -1,0 +1,34 @@
+name: inspec-jenkins-build
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 8 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install InSpec
+      run: |
+        curl -fsSL https://raw.githubusercontent.com/darkwizard242/devopsubuntu1804/v1.0/packer-build/mods/26-inspec.sh | sudo bash -s -- install
+    - name: Install Jenkins
+      run: |
+        java -version
+        curl -fsSL https://raw.githubusercontent.com/darkwizard242/devopsubuntu1804/v1.0/packer-build/mods/08-jenkins.sh | sudo bash -s -- install
+        # sudo apt-get install tree -y
+        # sudo tree /var/lib/jenkins
+        # sudo cat /var/lib/jenkins/failed-boot-attempts.txt
+    - name: Checking Jenkins Inspec Profile
+      run: |
+        inspec check . --no-color --chef-license accept
+    - name: Executing Jenkins Inspec Profile
+      run: |
+        sudo inspec exec . --no-color --chef-license accept
